@@ -4,7 +4,45 @@
 <title>Free Video Training: How to Start a Successful Youtube Channel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
+<script>
+$(document).ready(function() {
+
+    var submit = $("input[type=submit]");
+
+    submit.click(function(e) {
+       	var name = $("input[name=firstname]").val();
+    	var email = $("input[name=email]").val();
+    	var error = false;
+
+        e.preventDefault();
+        e.stopPropagation();
+       	
+       	if(name==""){
+       		error = true;
+       		alert("Name is required");
+       	}
+       	if(email=="" || !validateEmail(email)){
+       		error = true;
+       		alert("Email invalid");
+       	}
+		if (!error) {
+            var details = {"name": name, "email": email};
+            /* no backend. I can't post to /1/skz6okb/optin/submit because of cross-domain limitations
+            so i just redirected to the video page */
+            window.location = "https://jumpcut.com/1/skz6okb/video-1";	
+        }
+    });
+
+	function validateEmail(email) {
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regex.test(email);
+    }
+});
+</script>
+
 
 <body>
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,300i,400,400i,600,600i,700,800,900" rel="stylesheet">
@@ -396,7 +434,6 @@ h3{
 	text-align: left;
 }
 }
-</style>
 </style>
 
 </html>
